@@ -15,6 +15,8 @@
  */
 package com.jess.arms.base;
 
+import android.util.Log;
+
 /**
  * ================================================
  * Created by JessYan on 2018/7/27 15:32
@@ -31,6 +33,7 @@ public class Platform {
 
     static {
         DEPENDENCY_AUTO_LAYOUT = findClassByClassName("com.zhy.autolayout.AutoLayoutInfo");
+        Log.d("Platform   -=-", "_static initializer_34_ :\n _DEPENDENCY_AUTO_LAYOUT   "+ DEPENDENCY_AUTO_LAYOUT);
         DEPENDENCY_SUPPORT_DESIGN = findClassByClassName("android.support.design.widget.Snackbar");
         DEPENDENCY_GLIDE = findClassByClassName("com.bumptech.glide.Glide");
         DEPENDENCY_ANDROID_EVENTBUS = findClassByClassName("org.simple.eventbus.EventBus");
