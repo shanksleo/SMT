@@ -59,7 +59,7 @@ import okhttp3.internal.Util;
  * ================================================
  */
 @Module
-public class GlobalConfigModule {
+public class  GlobalConfigModule {
     private HttpUrl mApiUrl;
     private BaseUrl mBaseUrl;
     private BaseImageLoaderStrategy mLoaderStrategy;

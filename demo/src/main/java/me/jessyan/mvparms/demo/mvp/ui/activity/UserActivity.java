@@ -17,11 +17,14 @@ package me.jessyan.mvparms.demo.mvp.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.DefaultAdapter;
@@ -34,7 +37,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import me.jessyan.mvparms.demo.R;
-import me.jessyan.mvparms.demo.di.component.DaggerUserComponent;
+import me.jessyan.mvparms.joker.di.component.DaggerUserComponent;
 import me.jessyan.mvparms.demo.mvp.contract.UserContract;
 import me.jessyan.mvparms.demo.mvp.presenter.UserPresenter;
 import timber.log.Timber;
@@ -83,11 +86,17 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
         return R.layout.activity_user;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         initRecyclerView();
         mRecyclerView.setAdapter(mAdapter);
         initPaginate();
+
+        int labelColor = getResources().getColor(android.R.color.holo_blue_bright);
+        String сolorString = String.format("%X", labelColor).substring(2); // !!strip alpha value!!
+
+        setTitle(Html.fromHtml(String.format("<font color=\"#%s\">text</font>", сolorString)));
     }
 
 
