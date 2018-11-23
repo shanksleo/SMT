@@ -83,16 +83,13 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-        Log.d("BaseActivity_onCreateView_85   -=-", "onCreateView");
         View view = convertAutoView(name, context, attrs);
         return view == null ? super.onCreateView(name, context, attrs) : view;
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.d("BaseActivity_onCreate_93   -=-", "onCreate1");
         super.onCreate(savedInstanceState);
-        Log.d("BaseActivity_onCreate_95   -=-", "onCreate2");
         try {
             int layoutResID = initView(savedInstanceState);
             //如果initView返回0,框架则不会调用setContentView(),当然也不会 Bind ButterKnife

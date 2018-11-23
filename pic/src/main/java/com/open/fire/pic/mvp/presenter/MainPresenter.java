@@ -1,3 +1,31 @@
+package com.open.fire.pic.mvp.presenter;
+
+import android.app.Application;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.OnLifecycleEvent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.SupportActivity;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.jess.arms.di.scope.ActivityScope;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
+import com.jess.arms.utils.PermissionUtil;
+import com.jess.arms.utils.RxLifecycleUtils;
+import com.open.fire.pic.mvp.contract.MainContract;
+import com.open.fire.pic.mvp.model.entity.User;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
+import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
+
 /*
  * Copyright 2017 JessYan
  *
@@ -13,34 +41,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.mvparms.demo.mvp.presenter;
-
-import android.app.Application;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.OnLifecycleEvent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.SupportActivity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.integration.AppManager;
-import com.jess.arms.mvp.BasePresenter;
-import com.jess.arms.utils.PermissionUtil;
-import com.jess.arms.utils.RxLifecycleUtils;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-import me.jessyan.mvparms.demo.mvp.contract.UserContract;
-import me.jessyan.mvparms.demo.mvp.model.entity.Dad;
-import me.jessyan.mvparms.demo.mvp.model.entity.User;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
-import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 
 /**
  * ================================================
@@ -53,7 +53,7 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
  * ================================================
  */
 @ActivityScope
-public class UserPresenter extends BasePresenter<UserContract.Model, UserContract.View> {
+public class MainPresenter extends BasePresenter<MainContract.Model, MainContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -68,13 +68,11 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
     private boolean isFirst = true;
     private int preEndIndex;
 
-    @Inject
-    Dad mDad;
 
 
     @Inject
-    public UserPresenter( UserContract.View rootView) {
-        super( rootView);
+    public MainPresenter(MainContract.Model model, MainContract.View rootView) {
+        super(model, rootView);
     }
 
     /**
@@ -165,3 +163,4 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
         this.mApplication = null;
     }
 }
+
