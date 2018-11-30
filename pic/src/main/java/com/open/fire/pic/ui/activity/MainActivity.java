@@ -7,58 +7,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.jess.arms.base.BaseActivity;
+import com.jess.arms.base.BaseApplication;
 import com.jess.arms.di.component.AppComponent;
 import com.open.fire.pic.R;
+import com.open.fire.pic.di.component.DaggerMainComponent;
 import com.open.fire.pic.mvp.contract.MainContract;
 import com.open.fire.pic.mvp.presenter.MainPresenter;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-public class MainActivity extends BaseActivity<MainPresenter>  implements MainContract.View {
-
-
+public class MainActivity extends AppCompatActivity {
 
     @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         DaggerMainComponent
                 .builder()
-                .appComponent(appComponent)
-                .view(this)
                 .build()
                 .inject(this);
     }
 
-    @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_main;
-    }
 
-    @Override
-    public void initData(@Nullable Bundle savedInstanceState) {
 
-    }
-
-    @Override
-    public void startLoadMore() {
-
-    }
-
-    @Override
-    public void endLoadMore() {
-
-    }
-
-    @Override
-    public Activity getActivity() {
-        return null;
-    }
-
-    @Override
-    public RxPermissions getRxPermissions() {
-        return null;
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-
-    }
 }

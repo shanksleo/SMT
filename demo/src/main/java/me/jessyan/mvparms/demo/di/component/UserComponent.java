@@ -45,4 +45,18 @@ public interface UserComponent {
         UserComponent.Builder appComponent(AppComponent appComponent);
         UserComponent build();
     }
+
+
+    /*
+    *
+    * @Subcomponent.Builder
+    interface Builder {     // SubComponent 必须实现 @Subcomponent.Builder 接口
+        @BindsInstance
+        Builder view(TasksContract.View view);   // 在创建 Component 前绑定 TasksContract.View 依赖
+
+        TasksComponent build();
+    }
+
+    *
+    * */
 }

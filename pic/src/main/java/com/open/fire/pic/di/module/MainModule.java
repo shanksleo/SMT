@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.jess.arms.di.scope.ActivityScope;
 import com.open.fire.pic.mvp.contract.MainContract;
+import com.open.fire.pic.mvp.model.MainModel;
 import com.open.fire.pic.mvp.model.entity.User;
 import com.squareup.haha.perflib.Main;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -26,21 +27,6 @@ import dagger.Provides;
 @Module
 public class MainModule {
 
-
-
-    @ActivityScope
-    @Provides
-    static RxPermissions provideRxPermissions(MainContract.View view) {
-        return new RxPermissions((FragmentActivity) view.getActivity());
-    }
-
-    @ActivityScope
-    @Provides
-    static RecyclerView.LayoutManager provideLayoutManager(MainContract.View view) {
-        return new GridLayoutManager(view.getActivity(), 2);
-    }
-
-    @ActivityScope
     @Provides
     static List<User> provideUserList() {
         return new ArrayList<>();

@@ -16,15 +16,15 @@ import dagger.Component;
  * Create on 2018-11-23
  */
 @ActivityScope
-@Component(modules = MainModule.class , dependencies = AppComponent.class)
+@Component(modules = MainModule.class )
 public interface MainComponent {
 
     void inject(MainActivity mainActivity);
-    @Component.Builder
+    /*@Component.Builder
     interface Builder {
-        @BindsInstance
-        MainComponent.Builder view(MainContract.View view);
-        MainComponent.Builder appComponent(AppComponent appComponent);
+//        @BindsInstance
+//        MainComponent.Builder view(MainContract.View view);
+//        MainComponent.Builder appComponent(AppComponent appComponent);
         MainComponent build();
-    }
+    }*/
 }

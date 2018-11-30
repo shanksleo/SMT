@@ -62,8 +62,7 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
     Application mApplication;
     @Inject
     List<User> mUsers;
-    @Inject
-    RecyclerView.Adapter mAdapter;
+
     private int lastUserId = 1;
     private boolean isFirst = true;
     private int preEndIndex;
@@ -144,10 +143,6 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
                         if (pullToRefresh) mUsers.clear();//如果是下拉刷新则清空列表
                         preEndIndex = mUsers.size();//更新之前列表总长度,用于确定加载更多的起始位置
                         mUsers.addAll(users);
-                        if (pullToRefresh)
-                            mAdapter.notifyDataSetChanged();
-                        else
-                            mAdapter.notifyItemRangeInserted(preEndIndex, users.size());
                     }
                 });
     }
@@ -156,7 +151,6 @@ public class MainPresenter extends BasePresenter<MainContract.Model, MainContrac
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.mAdapter = null;
         this.mUsers = null;
         this.mErrorHandler = null;
         this.mAppManager = null;
