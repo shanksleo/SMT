@@ -27,10 +27,14 @@ import dagger.Provides;
 @Module
 public class MainModule {
 
+    @ActivityScope
     @Provides
     static List<User> provideUserList() {
         return new ArrayList<>();
     }
+
+
+
 
 
 }

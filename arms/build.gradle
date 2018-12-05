@@ -33,7 +33,8 @@ dependencies {
     api(rootProject.ext.dependencies["appcompat-v7"]) {
         exclude module: 'support-annotations'
     }
-    compileOnly rootProject.ext.dependencies["design"]
+//    compileOnly rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["design"]
     api(rootProject.ext.dependencies["recyclerview-v7"]) {
         exclude module: 'support-annotations'
     }
@@ -56,7 +57,7 @@ dependencies {
         exclude module: 'dagger'
         exclude module: 'api'
     }
-    implementation(rootProject.ext.dependencies["rxcache-jolyglot-gson"]) {
+    implementation (rootProject.ext.dependencies["rxcache-jolyglot-gson"]) {
         exclude module: 'gson'
     }
     api(rootProject.ext.dependencies["rxlifecycle2"]) {

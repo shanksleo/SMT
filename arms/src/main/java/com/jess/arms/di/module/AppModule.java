@@ -77,6 +77,17 @@ public abstract class AppModule {
         return AppManager.getAppManager().init(application);
     }
 
+    /*
+    *   @Provides
+        public XXInterface providesXX(XXImp imp) {
+            return imp;
+        }
+        其实这样的代码可以通过@Binds简化为
+
+        @Binds
+        public abstract XXInterface bindXX(XXImp imp);
+    * */
+
     @Binds
     abstract IRepositoryManager bindRepositoryManager(RepositoryManager repositoryManager);
 

@@ -133,6 +133,22 @@ public interface AppComponent {
      * @return {@link ExecutorService}
      */
     ExecutorService executorService();
+    //这边是显示的体现，当前这个Component被依赖的时候，能提供的东西
+
+
+
+   /* @Component(modules = {AppModule5.class})
+    public interface AppComponent5 {
+        void inject(App5 app);
+
+        //因为AppComponent会被dependencies，所以此处Module中提供的内容，我们需要在此处声明一下
+        App5 getApp();
+        Context getApplicationContext();
+    }
+
+    */
+
+
 
     void inject(AppDelegate delegate);
 

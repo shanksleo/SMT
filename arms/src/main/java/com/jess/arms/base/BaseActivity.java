@@ -83,8 +83,8 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-        View view = convertAutoView(name, context, attrs);
-        return view == null ? super.onCreateView(name, context, attrs) : view;
+//        View view = convertAutoView(name, context, attrs);
+        return  super.onCreateView(name, context, attrs) ;
     }
 
     @Override
