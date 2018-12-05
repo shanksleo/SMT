@@ -45,7 +45,7 @@ public class AnimationUtils {
 
     }
 
-    public static void slideToDown(View view, final com.jess.arms.widget.AnimationUtils.AnimationListener listener){
+    public static void slideToDown(View view, final AnimationListener listener){
         Animation slide = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0.0f,
                 Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF,
                 0.0f, Animation.RELATIVE_TO_SELF, 1.0f);

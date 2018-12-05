@@ -24,6 +24,8 @@ import android.support.annotation.Nullable;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
+
+//pre 预先   condition 条件 。。     preconditions  n. 前提, 先决条件
 public final class Preconditions {
 
     private Preconditions() {
