@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="AppTheme.Base"/>
+
+    <!-- 应用基础样式配置, 其他配置继承于此, 特殊Style配置务必写在子类中以避免冲突 -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light" >
+        <!-- 去除ActionBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+    </style>
+
+</resources>

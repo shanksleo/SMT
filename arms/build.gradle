@@ -109,6 +109,11 @@ dependencies {
 
     //test
     api rootProject.ext.dependencies["timber"]
+
+    //image
+    implementation(rootProject.ext.dependencies["fresco"])
+    implementation(rootProject.ext.dependencies["fresco-animated-gif"])
+    implementation(rootProject.ext.dependencies["fresco-drawee-span"])
 }
 
 apply from: '../bintray.gradle'

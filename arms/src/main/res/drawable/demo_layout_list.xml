@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--draw 会进行一个缩放-->
+    <item android:drawable="@drawable/border_business_card" />
+
+    <item
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp">
+
+        <shape>
+            <!--radius  半径-->
+            <corners android:radius="5dp" />
+            <!--渐变色-->
+            <!--android:angle="270" 从上到下-->
+            <!--android:angle="0" 从左到右-->
+            <gradient
+                android:angle="270"
+                android:endColor="#772DD6"
+                android:startColor="#782DD6" />
+
+
+        </shape>
+
+    </item>
+
+    <item
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp">
+
+        <shape>
+            <corners android:radius="5dp" />
+            <solid android:color="@color/base_red" />
+
+
+        </shape>
+
+    </item>
+
+</layer-list>

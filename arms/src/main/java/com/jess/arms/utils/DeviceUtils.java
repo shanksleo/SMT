@@ -43,6 +43,8 @@ import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.jess.arms.base.ContextProvider;
+
 import java.io.File;
 import java.lang.reflect.Field;
 import java.text.NumberFormat;
@@ -92,6 +94,15 @@ public class DeviceUtils {
      */
     public static float dpToPixel(Context context, float dp) {
         return dp * (getDisplayMetrics(context).densityDpi / 160F);
+    }
+
+
+    /*
+    * dp 转px
+    * */
+    public static int dpToPixel(float dp){
+        float px = dpToPixel(ContextProvider.get(),dp);
+        return (int) px;
     }
 
     /**

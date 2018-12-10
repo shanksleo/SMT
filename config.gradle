@@ -18,7 +18,8 @@ ext {
                    rxlifecycleSdkVersion   : "1.0",
                    rxlifecycle2SdkVersion  : "2.2.2",
                    espressoSdkVersion      : "3.0.1",
-                   canarySdkVersion        : "1.5.4"
+                   canarySdkVersion        : "1.5.4",
+                   frescoSdkVersion        : "1.9.0"
         ]
 
     dependencies = [
@@ -105,7 +106,13 @@ ext {
                 "logger"                   : "com.orhanobut:logger:2.2.0",
                 "canary-debug"             : "com.squareup.leakcanary:leakcanary-android:${version["canarySdkVersion"]}",
                 "canary-release"           : "com.squareup.leakcanary:leakcanary-android-no-op:${version["canarySdkVersion"]}",
-                "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1"
+                "umeng-analytics"          : "com.umeng.analytics:analytics:6.0.1",
+
+
+                //image
+                "fresco"                   : "com.facebook.fresco:fresco:${version["frescoSdkVersion"]}",
+                "fresco-animated-gif"      : "com.facebook.fresco:animated-gif:${version["frescoSdkVersion"]}",
+                "fresco-drawee-span"       : "com.facebook.fresco:drawee-span:${version["frescoSdkVersion"]}"
         ]
 
 

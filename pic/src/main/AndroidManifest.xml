@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.open.fire.pic">
+    <!--修改第三方库的最低兼容版本-->
+    <uses-sdk tools:overrideLibrary="org.qcode.qskinloader,com.facebook.shimmer,com.tencent.rtmp.liteavsdk,com.libksysv_java,com.libksysv_armv7a ,com.hpplay.sdk.source.api" />
+
 
     <application
         android:name="com.jess.arms.base.BaseApplication"

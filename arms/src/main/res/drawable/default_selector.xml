@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <bitmap android:alpha="0.8"
+            android:src="@drawable/icon_qzone" />
+    </item>
+
+    <item android:state_pressed="false">
+        <bitmap android:src="@drawable/icon_qzone"
+            android:tint="@color/base_red" />
+    </item>
+
+</selector>
+
+
+    <!--一张图表现选择效果，有效的所见缩减apk大小-->
+    <!--Android有个tint的着色效果，这样有些纯色图片，如果需要显示别的颜色效果，直接加上就行，特别方便。-->

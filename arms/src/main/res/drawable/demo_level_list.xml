@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/icon_qq"
+        android:maxLevel="1" />
+    <item
+        android:drawable="@drawable/icon_sina"
+        android:maxLevel="2" />
+    <item
+        android:drawable="@drawable/icon_qzone"
+        android:maxLevel="3" />
+</level-list>
+
+
+    <!--
+        在Android开发中，有时候需要对一个ImageView设置很多不同图片以表示某种应用状态，
+        比如，典型的是手机的信号强度从强到弱有多种状态图
+
+        ImageView image=(ImageView)findViewById(R.id.image);
+            image.setImageResource(R.drawable.xxxx);
+            image.setImageLevel(3);  -->
