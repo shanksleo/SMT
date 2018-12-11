@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jess.arms.utils;
+package com.jess.arms.utils.rx;
 
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.integration.lifecycle.FragmentLifecycleable;
 import com.jess.arms.integration.lifecycle.Lifecycleable;
 import com.jess.arms.mvp.IView;
+import com.jess.arms.utils.Preconditions;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.RxLifecycle;
 import com.trello.rxlifecycle2.android.ActivityEvent;

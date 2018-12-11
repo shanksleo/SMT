@@ -42,7 +42,7 @@ public class PreferenceHelper {
     * 使用application 的context 它会 使用包名
     * 使用activity 的context  它会使用当前Activity 的名字
     * */
-    public static PreferenceOperator getDefault() {
+    private static PreferenceOperator getDefault() {
         SharedPreferences sharedPreferences = android.preference.PreferenceManager.getDefaultSharedPreferences(ContextProvider.get());
         mPreferenceOperator = new PreferenceOperator(sharedPreferences);
         return mPreferenceOperator;
