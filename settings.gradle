@@ -1,1 +1,1 @@
-include ':demo', ':arms', ':arms-autolayout', ':arms-imageloader-glide', ':pic', ':autosize'
+include ':demo', ':arms', ':arms-autolayout', ':arms-imageloader-glide', ':pic', ':autosize', ':utils_package'

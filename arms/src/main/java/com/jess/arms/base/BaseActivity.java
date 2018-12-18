@@ -23,11 +23,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.InflateException;
 import android.view.View;
 
-import com.jess.arms.R;
 import com.jess.arms.base.delegate.IActivity;
 import com.jess.arms.integration.cache.Cache;
 import com.jess.arms.integration.cache.CacheType;
@@ -43,8 +41,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
-
-import static com.jess.arms.utils.ThirdViewUtil.convertAutoView;
 
 /**
  * ================================================
