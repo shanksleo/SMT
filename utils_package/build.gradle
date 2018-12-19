@@ -40,12 +40,16 @@ dependencies {
     }
     implementation rootProject.ext.dependencies["annotations"]
     //image
-    implementation(rootProject.ext.dependencies["fresco"])
-    implementation(rootProject.ext.dependencies["fresco-animated-gif"])
-    implementation(rootProject.ext.dependencies["fresco-drawee-span"])
+    api(rootProject.ext.dependencies["fresco"])
+    api(rootProject.ext.dependencies["fresco-animated-gif"])
+    api(rootProject.ext.dependencies["fresco-drawee-span"])
 
     implementation rootProject.ext.dependencies["design"]
     implementation(rootProject.ext.dependencies["recyclerview-v7"]) {
         exclude module: 'support-annotations'
     }
+
+    //rx
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["gson"]
 }

@@ -1,4 +1,4 @@
-package com.jess.arms.utils.rx;
+package com.jess.arms.rxtools.rx;
 
 import android.util.Log;
 

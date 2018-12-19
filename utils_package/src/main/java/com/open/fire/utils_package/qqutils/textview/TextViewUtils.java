@@ -1,4 +1,4 @@
-package com.open.fire.utils_package.qqutils;
+package com.open.fire.utils_package.qqutils.textview;
 
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;

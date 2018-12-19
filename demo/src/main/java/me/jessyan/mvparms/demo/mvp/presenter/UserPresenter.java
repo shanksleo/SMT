@@ -26,7 +26,7 @@ import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.PermissionUtil;
-import com.jess.arms.utils.rx.RxLifecycleUtils;
+import com.jess.arms.rxtools.rx.RxLifecycleUtils;
 
 import java.util.List;
 

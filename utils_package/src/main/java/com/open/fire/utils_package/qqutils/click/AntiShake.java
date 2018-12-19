@@ -1,4 +1,4 @@
-package com.jess.arms.utils.click;
+package com.open.fire.utils_package.qqutils.click;
 
 /**
  * class description
@@ -7,7 +7,7 @@ package com.jess.arms.utils.click;
  * Create on 2018-12-11
  */
 public class AntiShake {
-    private static LimitQueue<OneClickBean> queue = new LimitQueue<>(20);
+    private static LimitQueue<OneClickBean> queue = new LimitQueue<OneClickBean>(20);
 
     /*
     * <p>

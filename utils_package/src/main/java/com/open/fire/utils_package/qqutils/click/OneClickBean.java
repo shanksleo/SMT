@@ -1,6 +1,7 @@
-package com.jess.arms.utils.click;
+package com.open.fire.utils_package.qqutils.click;
 
-import com.jess.arms.utils.LogUtils;
+
+import com.open.fire.utils_package.base.LogTimber;
 
 import java.util.Calendar;
 
@@ -27,7 +28,7 @@ public class OneClickBean {
             lastClickTime = currentTime;
             return false;
         } else {
-            LogUtils.debugInfo("Ckick Event " + "View Shake On Click Denied : _" + getMethodName());
+            LogTimber.printDebugLogs("Ckick Event " + "View Shake On Click Denied : _" , getMethodName());
             return true;
         }
     }

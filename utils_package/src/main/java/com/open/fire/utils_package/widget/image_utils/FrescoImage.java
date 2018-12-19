@@ -1,12 +1,15 @@
-package com.open.fire.utils_package.widget.view;
+package com.open.fire.utils_package.widget.image_utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
 import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -69,6 +72,65 @@ public class FrescoImage extends SimpleDraweeView {
         roundingParams.setRoundAsCircle(false);
         this.getHierarchy().setRoundingParams(roundingParams);
     }
+
+    /*
+     * 使用这个方法，会按照图片的实际宽高比进行一个缩放。以设置的宽度为基准
+     * */
+    public void setImageByRealRatio(String imageUrl) {
+        setImageBySize(imageUrl, 0, 0);
+    }
+
+    /*
+     *  增加按照给给定尺寸和比例
+     *  shouldWidth  和   shouldHeight 只有一个起作用。预先按照宽度起作用，全给-1 会按照实际像素1：1显示
+     * */
+    public void setImageBySize(String imageUrl, int shouldWidth, int shouldHeight) {
+
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setControllerListener(new BaseControllerListener<com.facebook.imagepipeline.image.ImageInfo>() {
+                    @Override
+                    public void onFinalImageSet(String id, com.facebook.imagepipeline.image.ImageInfo imageInfo, Animatable animatable) {
+                        super.onFinalImageSet(id, imageInfo, animatable);
+                        int height = imageInfo.getHeight();
+                        int width = imageInfo.getWidth();
+//                            FrescoImage.this.setAspectRatio(ratio);
+
+                        if (FrescoImage.this.getParent() == null) return;
+                        ViewGroup.LayoutParams layoutParams = FrescoImage.this.getLayoutParams();
+
+                        if (shouldWidth > 0) {
+                            layoutParams.width = shouldWidth;
+                            int shouldHeight = (shouldWidth * height) / width;
+                            layoutParams.height = shouldHeight;
+                            FrescoImage.this.setLayoutParams(layoutParams);
+
+                        } else if (shouldHeight > 0) {
+                            layoutParams.height = shouldHeight;
+                            int shouldWidth = (shouldHeight * width) / height;
+                            layoutParams.width = shouldWidth;
+                            FrescoImage.this.setLayoutParams(layoutParams);
+                        } else if (shouldWidth == 0 && shouldHeight == 0) {
+                            int shouldHeight = (layoutParams.width * height) / width;
+                            layoutParams.height = shouldHeight;
+                            FrescoImage.this.setLayoutParams(layoutParams);
+                        } else if (shouldWidth == -1 && shouldHeight == -1) {
+                            layoutParams.height = height;
+                            layoutParams.width = width;
+                            FrescoImage.this.setLayoutParams(layoutParams);
+                        }
+
+//                        ViewGroup viewGroup = FrescoImage.this.getParent();
+
+//                        itemView.requestLayout();
+
+                    }
+                })
+                .setUri(Uri.parse(imageUrl))
+//                .setAutoPlayAnimations(true)//支持 gif
+                .build();
+        FrescoImage.this.setController(controller);
+    }
+
 
     /*
      * 增加对本地的gif 支持

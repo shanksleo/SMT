@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jess.arms.utils;
+package com.open.fire.utils_package.widget.image_utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -38,6 +38,9 @@ public class FastBlur {
         throw new IllegalStateException("you can't instantiate me!");
     }
 
+    /*
+    * @canReuseInBitmap 是否污染原先图片
+    * */
     public static Bitmap doBlur(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
 
         // Stack Blur v1.0 from

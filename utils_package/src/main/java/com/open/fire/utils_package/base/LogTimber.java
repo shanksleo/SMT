@@ -1,7 +1,9 @@
-package com.jess.arms.utils;
+package com.open.fire.utils_package.base;
 
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.open.fire.utils_package.base.ThreadUtils;
 
 /**
  * 日志打印工具

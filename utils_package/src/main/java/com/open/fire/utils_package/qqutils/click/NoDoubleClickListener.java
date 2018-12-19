@@ -1,4 +1,4 @@
-package com.jess.arms.utils.click;
+package com.open.fire.utils_package.qqutils.click;
 
 import android.view.View;
 

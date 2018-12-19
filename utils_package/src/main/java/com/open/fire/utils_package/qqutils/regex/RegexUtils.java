@@ -1,7 +1,6 @@
-package com.jess.arms.utils.regex;
+package com.open.fire.utils_package.qqutils.regex;
 
 import android.support.v4.util.SimpleArrayMap;
-
 
 import java.util.ArrayList;
 import java.util.Collections;

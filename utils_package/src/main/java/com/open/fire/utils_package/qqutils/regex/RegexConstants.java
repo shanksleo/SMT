@@ -1,4 +1,4 @@
-package com.jess.arms.utils.regex;
+package com.open.fire.utils_package.qqutils.regex;
 
 /**
  * <pre>

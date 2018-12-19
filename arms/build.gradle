@@ -49,8 +49,7 @@ dependencies {
         exclude module: 'support-compat'
     }
 
-    //rx
-    api rootProject.ext.dependencies["rxjava2"]
+
     api(rootProject.ext.dependencies["rxandroid2"]) {
         exclude module: 'rxjava'
     }
@@ -112,10 +111,12 @@ dependencies {
     //test
     api rootProject.ext.dependencies["timber"]
 
-    //image
+    /*//image
     implementation(rootProject.ext.dependencies["fresco"])
     implementation(rootProject.ext.dependencies["fresco-animated-gif"])
-    implementation(rootProject.ext.dependencies["fresco-drawee-span"])
+    implementation(rootProject.ext.dependencies["fresco-drawee-span"])*/
+
+    api project(':utils_package')
 }
 
 apply from: '../bintray.gradle'

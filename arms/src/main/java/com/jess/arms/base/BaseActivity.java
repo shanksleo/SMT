@@ -32,7 +32,6 @@ import com.jess.arms.integration.cache.CacheType;
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable;
 import com.jess.arms.mvp.IPresenter;
 import com.jess.arms.utils.ArmsUtils;
-import com.jess.arms.widget.StatusBarUtil;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import javax.inject.Inject;
@@ -89,10 +88,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //需要在setcontentview 之前
-        if (StatusBarUtil.setStatusBarLightMode(this, true)) {
-            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
-        }
+
 
         try {
             int layoutResID = initView(savedInstanceState);

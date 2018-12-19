@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.integration.ConfigModule;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PicConfig implements ConfigModule {
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
+        Fresco.initialize(context);
 
     }
 
