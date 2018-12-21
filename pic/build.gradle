@@ -40,11 +40,18 @@ android {
         }
 
         release {
+            //buildConfigField "boolean", "USE_CANARY", "false"  第一个：确定值的类型，第二个：指定key的名字，第三个：传值
+
+            //buildConfigField "String", "SERVER_HOST", "\"200.200.200.50/\""
+            ////取值
+            //String host = BuildConfig.SERVER_HOST;
+
+
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField "boolean", "USE_CANARY", "false"
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
+            minifyEnabled true   //打开混淆
+            shrinkResources true  //用shrinkResources true开启资源压缩后，所有未被使用的资源默认被移除。
+            zipAlignEnabled true  //zipAlign可以让安装包中的资源按4字节对齐，这样可以减少应用在运行时的内存消耗
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

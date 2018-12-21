@@ -11,18 +11,25 @@ import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
 import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.CloseableImage;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.jess.arms.utils.ArmsUtils;
-import com.open.fire.utils_package.base.LogTimber;
+import com.open.fire.pic.Bean;
 import com.open.fire.pic.R;
 import com.open.fire.pic.di.Baby;
 import com.open.fire.pic.di.component.DaggerMainComponent;
 import com.open.fire.pic.mvp.model.entity.User;
 import com.open.fire.utils_package.base.DeviceUtils;
+import com.open.fire.utils_package.base.LogTimber;
+import com.open.fire.utils_package.qqutils.ApiGsonParser;
 import com.open.fire.utils_package.widget.image_utils.FastBlur;
 import com.open.fire.utils_package.widget.image_utils.FrescoImage;
 import com.open.fire.utils_package.widget.image_utils.FrescoUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -77,18 +84,37 @@ public class MainActivity extends AppCompatActivity {
                 int height = mBitmap.getHeight();
                 int width = mBitmap.getWidth();
 
-                int shouldHeight  = ((int)DeviceUtils.getScreenWidth(MainActivity.this)) * height / width;
+                int shouldHeight = ((int) DeviceUtils.getScreenWidth(MainActivity.this)) * height / width;
                 ViewGroup.LayoutParams layoutParams = iv.getLayoutParams();
                 layoutParams.height = shouldHeight;
-                layoutParams.width = (int)DeviceUtils.getScreenWidth(MainActivity.this);
+                layoutParams.width = (int) DeviceUtils.getScreenWidth(MainActivity.this);
                 iv.setLayoutParams(layoutParams);
-                iv.setImageBitmap(FastBlur.doBlur(mBitmap,15,true));
+                iv.setImageBitmap(FastBlur.doBlur(mBitmap, 15, true));
             }
 
             @Override
             protected void onFailureImpl(DataSource<CloseableReference<CloseableImage>> dataSource) {
             }
         });
+
+        init();
+    }
+
+    private void init() {
+        Map jsonObject = new HashMap();
+
+        jsonObject.put("a", null);
+        jsonObject.put("b", "");
+        jsonObject.put("c", "null");
+        Gson g = new GsonBuilder().serializeNulls().create();
+
+        String jsonObject1 = g.toJson(jsonObject);
+
+        LogTimber.printDebugLogs("q", jsonObject.toString());
+
+        Bean v = ApiGsonParser.fromJSONObject(jsonObject1, Bean.class);
+
+
     }
 
 

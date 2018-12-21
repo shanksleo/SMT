@@ -11,4 +11,9 @@
         android:layout_height="220dp"
         android:layout_centerInParent="true" />
 
+    <com.open.fire.pic.mvp.ui.CustomView
+        android:layout_alignParentBottom="true"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"></com.open.fire.pic.mvp.ui.CustomView>
+
 </RelativeLayout>

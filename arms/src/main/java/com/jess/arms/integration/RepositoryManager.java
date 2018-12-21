@@ -78,8 +78,34 @@ public class RepositoryManager implements IRepositoryManager {
         return createWrapperService(serviceClass);
     }
 
+    /*
+    http://www.cnblogs.com/xiaoluo501395377/p/3383130.html
+
+    public static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) throws IllegalArgumentException
+
+        loader:　　一个ClassLoader对象，定义了由哪个ClassLoader对象来对生成的代理对象进行加载
+        interfaces:　　一个Interface对象的数组，表示的是我将要给我需要代理的对象提供一组什么接口，如果我提供了一组接口给它，那么这个代理对象就宣称实现了该接口(多态)，这样我就能调用这组接口中的方法了
+        h:　　一个InvocationHandler对象，表示的是当我这个动态代理对象在调用方法的时候，会关联到哪一个InvocationHandler对象上
+
+    *
+    * 可能我以为返回的这个代理对象会是Subject类型的对象，或者是InvocationHandler的对象，结果却不是，
+    * 首先我们解释一下为什么我们这里可以将其转化为Subject类型的对象？
+    * 原因就是在newProxyInstance这个方法的第二个参数上，我们给这个代理对象提供了一组什么接口，那么我这个代理对象就会实现了这组接口，这个时候我们当然可以将这个代理对象强制类型转化为这组接口中的任意一个，因为这里的接口是Subject类型，所以就可以将其转化为Subject类型了。
+    *
+    *  Object invoke(Object proxy, Method method, Object[] args) throws Throwable
+
+        proxy:　　指代我们所代理的那个真实对象
+        method:　　指代的是我们所要调用真实对象的某个方法的Method对象
+        args:　　指代的是调用真实对象某个方法时接受的参数
+    *
+    *
+    * */
+
+
     /**
      * 根据 https://zhuanlan.zhihu.com/p/40097338 对 Retrofit 进行的优化
+     * 代理类在程序运行时创建的代理方式被成为动态代理。
+     *
      *
      * @param serviceClass ApiService class
      * @param <T>          ApiService class
