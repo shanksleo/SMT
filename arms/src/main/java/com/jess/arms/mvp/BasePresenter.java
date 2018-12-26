@@ -42,6 +42,15 @@ import io.reactivex.functions.Action;
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
+ * <p>
+ * https://juejin.im/post/5c1d00066fb9a04a0f6528f0
+ * 重识Java之夯实泛型
+ * <p>
+ * 如果只是在某个方法上使用范型 （用在形参，或者 返回值上），那么 在方法的返回值前加上<T>来表示泛型变量.  <T extends Animal> 如果想规范范型类型
+ * public <T> T normalMethod(T text) {
+ *     System.out.println("normalMethod:" + text);
+ * return text;
+ * }
  */
 public class BasePresenter<M extends IModel, V extends IView> implements IPresenter, LifecycleObserver {
     protected final String TAG = this.getClass().getSimpleName();
@@ -85,7 +94,7 @@ public class BasePresenter<M extends IModel, V extends IView> implements IPresen
         //将 LifecycleObserver 注册给 LifecycleOwner 后 @OnLifecycleEvent 才可以正常使用
         if (mRootView != null && mRootView instanceof LifecycleOwner) {
             ((LifecycleOwner) mRootView).getLifecycle().addObserver(this);
-            if (mModel!= null && mModel instanceof LifecycleObserver){
+            if (mModel != null && mModel instanceof LifecycleObserver) {
                 ((LifecycleOwner) mRootView).getLifecycle().addObserver((LifecycleObserver) mModel);
             }
         }

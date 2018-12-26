@@ -3,9 +3,11 @@ package com.open.fire.pic.mvp.ui.activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 
 import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.DataSource;
@@ -13,15 +15,18 @@ import com.facebook.imagepipeline.datasource.BaseBitmapDataSubscriber;
 import com.facebook.imagepipeline.image.CloseableImage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import com.jess.arms.utils.ArmsUtils;
 import com.open.fire.pic.Bean;
+import com.open.fire.pic.BuildConfig;
 import com.open.fire.pic.R;
 import com.open.fire.pic.di.Baby;
 import com.open.fire.pic.di.component.DaggerMainComponent;
 import com.open.fire.pic.mvp.model.entity.User;
+import com.open.fire.pic.mvp.ui.CustomView;
 import com.open.fire.utils_package.base.DeviceUtils;
 import com.open.fire.utils_package.base.LogTimber;
+import com.open.fire.utils_package.base.StatusBarUtil;
+import com.open.fire.utils_package.base.StatusBarUtilsPlus;
 import com.open.fire.utils_package.qqutils.ApiGsonParser;
 import com.open.fire.utils_package.widget.image_utils.FastBlur;
 import com.open.fire.utils_package.widget.image_utils.FrescoImage;
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.iv)
     FrescoImage iv;
 
+    ViewStub mViewStub;
+    CustomView mCustomView;
+
     private Bitmap mBitmap;
     private String url = "http://s2.dgtle.com/forum/201812/04/165923rukfbk3v2tv33ue3.jpg?imageView2/2/w/960/q/100";
 
@@ -53,10 +61,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //需要在setcontentview 之前
-        /*if (StatusBarUtil.setStatusBarLightMode(this, true)) {
-            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
-        }*/
-        ArmsUtils.statuInScreen(this);
         setContentView(R.layout.activity_main);
         DaggerMainComponent
                 .builder()
@@ -65,17 +69,34 @@ public class MainActivity extends AppCompatActivity {
 
                 .inject(this);
         ButterKnife.bind(this);
+        if (StatusBarUtil.setStatusBarLightMode(this, true)) {
+            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.holo_red_dark));
+        }
+        StatusBarUtilsPlus.setFullScreen(this, true);
 
         findViewById(R.id.iv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ArmsUtils.snackbarTextWithLong("哈哈哈");
+                StatusBarUtilsPlus.setFullScreen(MainActivity.this, false);
+                if (mCustomView == null) {
+                    try {
+                        mCustomView = (CustomView) ((ViewStub) findViewById(R.id.view_stub)).inflate();
+//                        findViewById(R.id.view_stub).setVisibility(View.VISIBLE);
+                    } catch (Exception e) {
+                    }
+                }
+//                mCustomView.toast();
+//                LogTimber.printDebugLogs("test", mCustomView.getId() + "");
+
             }
         });
 
 //        iv.setImageBySize("http://s2.dgtle.com/forum/201812/04/165923rukfbk3v2tv33ue3.jpg?imageView2/2/w/960/q/100", (int)DeviceUtils.getScreenWidth(this), -1);
 //        iv.setImageResource(R.drawable.icon_qq);
-        LogTimber.printDebugLogs("Mian", "哈哈");
+
+        boolean logDebug = BuildConfig.LOG_DEBUG;
+        LogTimber.printDebugLogs("Mian", "logDebug" + logDebug);
 
         FrescoUtil.loadUrlImage(url, true, new BaseBitmapDataSubscriber() {
             @Override

@@ -25,15 +25,14 @@ android {
         multiDexEnabled true
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
+
     buildTypes {
         debug {
-            buildConfigField "boolean", "LOG_DEBUG", "true"
+            if (isOK.toBoolean()){
+                buildConfigField "boolean", "LOG_DEBUG", "true"
+            } else{
+                buildConfigField "boolean", "LOG_DEBUG", "false"
+            }
             buildConfigField "boolean", "USE_CANARY", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

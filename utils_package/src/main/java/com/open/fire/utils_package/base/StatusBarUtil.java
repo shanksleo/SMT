@@ -21,6 +21,14 @@ import java.util.List;
  * <p>主要针对不同的ROM尽可能的进行状态栏适配</p>
  */
 public final class StatusBarUtil {
+
+    /* 不需要设置在contentView 之前
+    * if (StatusBarUtil.setStatusBarLightMode(this, true)) {
+            StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.transparent));
+        }
+
+    * */
+
     public static final String TAG = StatusBarUtil.class.getSimpleName();
 
     /**

@@ -105,7 +105,9 @@ public class RepositoryManager implements IRepositoryManager {
     /**
      * 根据 https://zhuanlan.zhihu.com/p/40097338 对 Retrofit 进行的优化
      * 代理类在程序运行时创建的代理方式被成为动态代理。
-     *
+     * <p>
+     * https://juejin.im/post/5c2039e451882561431a372a
+     * Java 静态代理和动态代理的使用及原理解析
      *
      * @param serviceClass ApiService class
      * @param <T>          ApiService class

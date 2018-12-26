@@ -50,6 +50,8 @@ import io.reactivex.subjects.Subject;
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
+ *
+ * https://www.jianshu.com/p/465f645adac0   Android Fragment 的使用，一些你不可不知的注意事项
  */
 public abstract class BaseFragment<P extends IPresenter> extends Fragment implements IFragment, FragmentLifecycleable {
     protected final String TAG = this.getClass().getSimpleName();

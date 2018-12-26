@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 
+import com.jess.arms.utils.ArmsUtils;
 import com.open.fire.pic.R;
 
 /**
@@ -35,6 +36,11 @@ public class CustomView extends RelativeLayout {
     }
 
     public void initView(){
+
         LayoutInflater.from(CustomView.this.getContext()).inflate(R.layout.in,this,true);
+    }
+
+    public void toast(){
+        ArmsUtils.snackbarText("toast");
     }
 }

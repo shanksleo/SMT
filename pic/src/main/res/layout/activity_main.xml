@@ -11,9 +11,16 @@
         android:layout_height="220dp"
         android:layout_centerInParent="true" />
 
+    <ViewStub
+        android:id="@+id/view_stub"
+        android:layout="@layout/stub_main"
+        android:inflatedId="@+id/view_stub_xplay_convoy_after_inflate"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
     <com.open.fire.pic.mvp.ui.CustomView
-        android:layout_alignParentBottom="true"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"></com.open.fire.pic.mvp.ui.CustomView>
+        android:visibility="gone"
+        android:layout_alignParentRight="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"></com.open.fire.pic.mvp.ui.CustomView>
 
 </RelativeLayout>

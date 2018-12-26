@@ -2,6 +2,10 @@
 
 # Proguard是一个Java类文件压缩器、优化器、混淆器、预校验器。压缩环节会检测以及移除没有用到的类、字段、方法以及属性。
 
+#ProGuard由shrink、optimize、obfuscate和preverify四个步骤组成，每个步骤都是可选的，需要哪些步骤都可以在脚本中配置。
+    #压缩(Shrink): 侦测并移除代码中无用的类、字段、方法、和特性(Attribute)。
+    #优化(Optimize): 分析和优化字节码。
+    #混淆(Obfuscate): 使用a、b、c、d这样简短而无意义的名称，对类、字段和方法进行重命名。
 # 混淆后默认会在工程目录app/build/outputs/mapping/release（debug）下生成一个mapping.txt文件，这就是混淆规则
 
 -dontshrink #关闭压缩
@@ -43,7 +47,7 @@
 #具体规则
 #（保持类名不混淆）
 -keep class com.thc.test.*
-#一颗星表示只是保持该包下的类名，而子包下的类名还是会被混淆；
+#一颗星表示 只 是保持该包下的类名，而子包下的类名还是会被混淆；
 -keep class com.thc.test.**
 #两颗星表示把本包和所含子包下的类名都保持；
 
@@ -164,7 +168,7 @@
 #                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 #            }
 #        }
-#    lintOptions {
+#    lintOptions {  //这个是在编译阶段
 #            // true--关闭lint报告的分析进度
 #            quiet true
 #            // true--错误发生后停止gradle构建

@@ -3,6 +3,7 @@ package com.open.fire.utils_package.widget.view;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.IdRes;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.open.fire.utils_package.R;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * class description
@@ -19,49 +21,52 @@ import java.lang.ref.WeakReference;
  * @author shankshu
  * Create on 2018-12-21
  */
-public class CustomView extends RelativeLayout {
-    private WeakReference<Activity> mActivtyWeakReference;
+public class BaseCustomView extends RelativeLayout {
+    private WeakReference<Activity> mActivityWeakReference;
+    List<?> mObjects;
     private View mView;
 
-    public CustomView(Context context) {
+    public BaseCustomView(Context context) {
         super(context);
         initView(context);
     }
 
-    public CustomView(Context context, AttributeSet attrs) {
+    public BaseCustomView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CustomView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BaseCustomView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CustomView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public BaseCustomView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initView(context);
     }
 
     private void initView(Context context) {
         if (context instanceof Activity) {
-            mActivtyWeakReference = new WeakReference<Activity>((Activity) context);
+            mActivityWeakReference = new WeakReference<Activity>((Activity) context);
         }
         //最后一个参数必须为true
+        //root 父布局，如果不为空的话。attach to root .true 就会增加到父布局 false 就不会
         mView = LayoutInflater.from(context).inflate(R.layout.layout_share_view, this, true);
 //        ButterKnife.bind(mView, this);
         mView.setVisibility(GONE);
     }
 
-    public void setContentView() {
-
+    public int setContentView(@IdRes int resId) {
+        return resId;
     }
 
 
     @Override
     protected void onDetachedFromWindow() {
+        mActivityWeakReference = null;
         super.onDetachedFromWindow();
     }
 }
