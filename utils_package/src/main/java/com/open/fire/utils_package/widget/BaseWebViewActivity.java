@@ -27,6 +27,8 @@ import java.util.Map;
 public class BaseWebViewActivity extends AppCompatActivity {
 
     /*
+
+    chrome://inspect/#devices
     *
     * 1、WebViewClient就是帮助WebView处理各种通知、请求事件的，
     * 具体来说包括：onLoadResource 、onPageStart 、

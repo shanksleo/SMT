@@ -17,10 +17,14 @@ package com.open.fire.utils_package.widget.image_utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.media.ExifInterface;
 import android.widget.TextView;
+
+import com.open.fire.utils_package.base.ContextProvider;
+import com.open.fire.utils_package.widget.explosion_field.Utils;
 
 import java.io.IOException;
 
@@ -205,6 +209,17 @@ public class DrawableProvider {
             e.printStackTrace();
         }
         return degree;
+    }
+
+
+    /**
+     * Bitmap to drawable.
+     *
+     * @param bitmap The bitmap.
+     * @return drawable
+     */
+    public static Drawable bitmap2Drawable(final Bitmap bitmap) {
+        return bitmap == null ? null : new BitmapDrawable(ContextProvider.get().getResources(), bitmap);
     }
 
 }

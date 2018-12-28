@@ -1,4 +1,21 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="splashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>//状态栏颜色设置为透明
+    </style>
+
+    <!--
+      方案一 <item name="android:windowIsTranslucent">true</item>//点击启动图标时由于绘制的startWindow是全透明的.所以没有启动屏的白屏幕
+      方案二 <item name="android:windowBackground">@drawable/splash01</item>  我们都知道activity的绘制也是需要时间的，所以android系统框架设计了一个叫做startWindow的窗口，在activity的window绘制完成之前，让startWindow显示在我们的手机屏幕上，直到activity准备完成再显示activity，前面说的黑白屏其实也就是我们app的SplashActivity绘制完成前的startWindow。
+
+        而startWindow的background与我们要启动的activity的主题中windowBackground是一样的，所以一切就变得很简单了：首先自定义theme，splashActivity一般也都是一张全屏显示的大图或者广告viewpager
+        * 最好的解决方案。使用IntentService实现异步处理耗时的操作
+    -->
+
+    <!--Activity 切换动画-->
 
 
 

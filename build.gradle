@@ -4,6 +4,10 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://dl.bintray.com/matrix/maven/"
+        }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0-beta04'
@@ -11,6 +15,7 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
         //Gradle Bintray Plugin
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
     }
 }
 
@@ -19,6 +24,9 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven {
+            url "https://dl.bintray.com/matrix/maven/"
+        }
     }
 }
 

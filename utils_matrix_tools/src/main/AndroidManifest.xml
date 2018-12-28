@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tk.shanks.jh" >
+
+    <application>
+
+        <meta-data
+            android:name="tk.shanks.jh.app.UtilsConfig"
+            android:value="ConfigModule"/>
+
+    </application>
+</manifest>
+
