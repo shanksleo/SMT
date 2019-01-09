@@ -10,7 +10,7 @@ import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
 import com.open.fire.utils_package.R;
-import com.open.fire.utils_package.base.ContextProvider;
+import com.open.fire.utils_package.app.ContextProvider;
 import com.open.fire.utils_package.base.DeviceUtils;
 
 import java.util.regex.Matcher;

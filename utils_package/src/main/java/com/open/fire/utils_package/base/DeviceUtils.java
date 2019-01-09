@@ -45,6 +45,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 
+import com.open.fire.utils_package.app.ContextProvider;
+
 import java.io.File;
 import java.lang.reflect.Field;
 import java.text.NumberFormat;

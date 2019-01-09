@@ -19,7 +19,8 @@ ext {
                    rxlifecycle2SdkVersion  : "2.2.2",
                    espressoSdkVersion      : "3.0.1",
                    canarySdkVersion        : "1.5.4",
-                   frescoSdkVersion        : "1.9.0"
+                   frescoSdkVersion        : "1.9.0",
+                   QPMSdkVersion           : "1.0.5"
         ]
 
     dependencies = [
@@ -112,8 +113,9 @@ ext {
                 //image
                 "fresco"                   : "com.facebook.fresco:fresco:${version["frescoSdkVersion"]}",
                 "fresco-animated-gif"      : "com.facebook.fresco:animated-gif:${version["frescoSdkVersion"]}",
-                "fresco-drawee-span"       : "com.facebook.fresco:drawee-span:${version["frescoSdkVersion"]}"
-        ]
+                "fresco-drawee-span"       : "com.facebook.fresco:drawee-span:${version["frescoSdkVersion"]}",
+                "QPM"                      : "com.github.ZhuoKeTeam:QPM:${version["QPMSdkVersion"]}"
+    ]
 
 
 }

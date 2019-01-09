@@ -8,7 +8,7 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.interfaces.DraweeHierarchy;
 import com.facebook.drawee.span.DraweeSpan;
 import com.facebook.drawee.span.DraweeSpanStringBuilder;
-import com.open.fire.utils_package.base.ContextProvider;
+import com.open.fire.utils_package.app.ContextProvider;
 import com.open.fire.utils_package.base.DeviceUtils;
 
 /**

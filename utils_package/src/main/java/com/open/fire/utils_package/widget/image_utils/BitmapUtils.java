@@ -1,6 +1,5 @@
 package com.open.fire.utils_package.widget.image_utils;
 
-import android.content.ContentProvider;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,8 +35,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.open.fire.utils_package.base.ContextProvider;
-import com.open.fire.utils_package.widget.explosion_field.Utils;
+import com.open.fire.utils_package.app.ContextProvider;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

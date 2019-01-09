@@ -3,7 +3,7 @@ package com.jess.arms.rxtools.rx;
 import android.util.Log;
 
 import com.jess.arms.mvp.IView;
-import com.open.fire.utils_package.qqutils.PreferenceHelper;
+import com.open.fire.utils_package.qqutils.stage.PreferenceHelper;
 
 import java.util.concurrent.TimeUnit;
 

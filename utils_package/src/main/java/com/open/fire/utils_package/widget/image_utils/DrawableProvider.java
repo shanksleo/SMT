@@ -23,8 +23,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.media.ExifInterface;
 import android.widget.TextView;
 
-import com.open.fire.utils_package.base.ContextProvider;
-import com.open.fire.utils_package.widget.explosion_field.Utils;
+import com.open.fire.utils_package.app.ContextProvider;
 
 import java.io.IOException;
 

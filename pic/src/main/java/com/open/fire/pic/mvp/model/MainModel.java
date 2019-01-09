@@ -2,14 +2,13 @@ package com.open.fire.pic.mvp.model;
 
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
-import com.open.fire.pic.mvp.contract.MainContract;
+import com.open.fire.pic.mvp.contract.HomeContract;
 import com.open.fire.pic.mvp.model.entity.User;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import dagger.Binds;
 import io.reactivex.Observable;
 
 /**
@@ -18,18 +17,14 @@ import io.reactivex.Observable;
  * @author shankshu
  * Create on 2018-11-26
  */
-public abstract class MainModel extends BaseModel implements MainContract.Model {
-
+public abstract class MainModel extends BaseModel implements HomeContract.Model {
 
 
     public MainModel(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
 
-    @Override
-    public Observable<List<User>> getUsers(int lastIdQueried, boolean update) {
-        return null;
-    }
+
 
     @Override
     public void onDestroy() {

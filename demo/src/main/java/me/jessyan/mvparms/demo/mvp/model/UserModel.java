@@ -78,7 +78,7 @@ public class UserModel extends BaseModel implements UserContract.Model {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     void onPause() {
-        Timber.d("Release Resource");
+        Timber.d("Release ResourceReflecter");
     }
 
 }

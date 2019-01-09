@@ -1,9 +1,9 @@
-package com.open.fire.utils_package.qqutils;
+package com.open.fire.utils_package.qqutils.stage;
 
 import android.content.SharedPreferences;
 
 import com.open.fire.utils_package.base.Preconditions;
-import com.open.fire.utils_package.base.ContextProvider;
+import com.open.fire.utils_package.app.ContextProvider;
 
 
 /**

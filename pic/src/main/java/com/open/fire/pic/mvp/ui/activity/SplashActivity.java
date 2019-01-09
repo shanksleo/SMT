@@ -12,8 +12,8 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.facebook.common.executors.UiThreadImmediateExecutorService;
 import com.facebook.common.references.CloseableReference;
 import com.facebook.datasource.BaseDataSubscriber;
@@ -28,17 +28,20 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.base.ContextProvider;
 import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.di.component.DaggerAppComponent;
 import com.jess.arms.rxtools.rx.RxLifecycleUtils;
 import com.jess.arms.utils.ArmsUtils;
 import com.open.fire.pic.R;
 import com.open.fire.utils_package.base.DeviceUtils;
 import com.open.fire.utils_package.base.StatusBarUtil;
 import com.open.fire.utils_package.base.StatusBarUtilsPlus;
+import com.open.fire.utils_package.qqutils.alert.ToastUtils;
 import com.open.fire.utils_package.widget.explosion_field.ExplosionField;
 import com.open.fire.utils_package.widget.image_utils.BitmapUtils;
 import com.open.fire.utils_package.widget.image_utils.FastBlur;
 import com.open.fire.utils_package.widget.image_utils.FrescoImage;
 import com.open.fire.utils_package.widget.image_utils.FrescoUtil;
+import com.zk.qpm.manager.QPMManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -52,7 +55,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * class description
- *  I/ActivityManager: Displayed com.zhihu.android/.app.ui.activity.MainActivity: +1s412ms (total +1s978ms)
+ *  I/ActivityManager: Displayed com.zhihu.android/.app.ui.activity.HomeActivity: +1s412ms (total +1s978ms)
  *  这个可以作为启动时间参考
  * @author shankshu
  * Create on 2018-12-27
@@ -87,6 +90,11 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        if (!QPMManager.getInstance().floatViewShow()) {
+            ToastUtils.showShort("请开启悬浮窗权限");
+        }
+
+
         int i = new java.util.Random().nextInt(3);
         if (i == 0 || i == 2){
             getBackGroundImage(url);
@@ -116,7 +124,7 @@ public class SplashActivity extends BaseActivity {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        ArmsUtils.startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                        ArmsUtils.startActivity(new Intent(SplashActivity.this, DaaggerActivity.class));
                         SplashActivity.this.finish();
                     }
                 });
@@ -152,15 +160,15 @@ public class SplashActivity extends BaseActivity {
                         int blurBitmapWidth = blurBitmap.getWidth();
                         int blurBitmapHeight = blurBitmap.getHeight();
 
-                        if (DeviceUtils.isPortrait(com.open.fire.utils_package.base.ContextProvider.get())){
-                            int shouldWidth = (int) ((DeviceUtils.getScreenWidth(ContextProvider.get()) * blurBitmapHeight) / DeviceUtils.getScreenHeight(com.open.fire.utils_package.base.ContextProvider.get()));
+                        if (DeviceUtils.isPortrait(com.open.fire.utils_package.app.ContextProvider.get())){
+                            int shouldWidth = (int) ((DeviceUtils.getScreenWidth(ContextProvider.get()) * blurBitmapHeight) / DeviceUtils.getScreenHeight(com.open.fire.utils_package.app.ContextProvider.get()));
                             int x = (blurBitmapWidth - shouldWidth) / 2;
 
                             Bitmap clipBitmap = BitmapUtils.clip(blurBitmap,x,0,shouldWidth,blurBitmapHeight);
                             mainContent.setBackground(new BitmapDrawable(clipBitmap));
                         }
-                        if (DeviceUtils.isLandscape(com.open.fire.utils_package.base.ContextProvider.get())){
-                            int shouldHeight = (int) ((DeviceUtils.getScreenHeight(ContextProvider.get()) * blurBitmapWidth) / DeviceUtils.getScreenWidth(com.open.fire.utils_package.base.ContextProvider.get()));
+                        if (DeviceUtils.isLandscape(com.open.fire.utils_package.app.ContextProvider.get())){
+                            int shouldHeight = (int) ((DeviceUtils.getScreenHeight(ContextProvider.get()) * blurBitmapWidth) / DeviceUtils.getScreenWidth(com.open.fire.utils_package.app.ContextProvider.get()));
                             int y = (blurBitmapHeight - shouldHeight) / 2;
                             Bitmap clipBitmap = BitmapUtils.clip(blurBitmap,0,y,blurBitmapWidth,shouldHeight);
                             mainContent.setBackground(new BitmapDrawable(clipBitmap));

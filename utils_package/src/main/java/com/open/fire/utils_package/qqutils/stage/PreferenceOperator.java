@@ -1,4 +1,4 @@
-package com.open.fire.utils_package.qqutils;
+package com.open.fire.utils_package.qqutils.stage;
 
 import android.content.SharedPreferences;
 import android.util.Base64;

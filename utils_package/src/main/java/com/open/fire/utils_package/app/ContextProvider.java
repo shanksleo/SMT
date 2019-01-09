@@ -1,4 +1,4 @@
-package com.open.fire.utils_package.base;
+package com.open.fire.utils_package.app;
 
 import android.annotation.SuppressLint;
 import android.app.Application;

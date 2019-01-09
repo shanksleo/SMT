@@ -122,6 +122,8 @@ public class RepositoryManager implements IRepositoryManager {
                             throws Throwable {
                         if (method.getReturnType() == Observable.class) {
                             // 如果方法返回值是 Observable 的话，则包一层再返回
+                            //二次代理主要的应用方面是在return 的多包裹一层
+                            //1。 getRetrofitMethod() 真正的耗时操作
                             return Observable.defer(() -> {
                                 final T service = getRetrofitService(serviceClass);
                                 // 执行真正的 Retrofit 动态代理的方法
