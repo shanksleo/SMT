@@ -6,6 +6,7 @@
     <uses-sdk tools:overrideLibrary="org.qcode.qskinloader,com.facebook.shimmer,com.tencent.rtmp.liteavsdk,com.libksysv_java,com.libksysv_armv7a ,com.hpplay.sdk.source.api,com.tencent.matrix.iocanary,com.tencent.sqlitelint,com.tencent.matrix.android.commoms,com.tencent.matrix.trace,com.tencent.matrix.resource,com.tencent.matrix,com.zk.qpm" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:name="com.jess.arms.base.BaseApplication"
@@ -34,7 +35,6 @@
             android:theme="@style/splashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,12 +45,22 @@
         <!--android:exported="true" 在Activity中该属性用来标示：当前Activity是否可以被另一个Application的组件启动：true允许被启动；false不允许被启动。-->
         </activity>
         <activity android:name=".mvp.ui.activity.DaaggerActivity" />
+        <activity android:name=".mvp.ui.activity.ConfigActivity"
+            android:configChanges="keyboardHidden"
+            />
 
         <!-- Arms 配置 -->
         <meta-data
             android:name="com.open.fire.pic.app.PicConfig"
             android:value="ConfigModule" />
-
+        <receiver android:name=".alarm.LoongggAlarmReceiver"
+            android:process=":alarm"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.shanks.alarm"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

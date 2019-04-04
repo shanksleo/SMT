@@ -235,6 +235,7 @@ public class AppDelegate implements App, AppLifecycles {
          */
         @Override
         public void onTrimMemory(int level) {
+
             //状态1. 当开发者的 App 正在运行
             //设备开始运行缓慢, 不会被 kill, 也不会被列为可杀死的, 但是设备此时正运行于低内存状态下, 系统开始触发杀死 LRU 列表中的进程的机制
 //                case TRIM_MEMORY_RUNNING_MODERATE:

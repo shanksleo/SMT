@@ -14,7 +14,7 @@
 #-dontshrink  可以使这个（ shrinkResources true  ）不起作用
 
 -dontoptimize  #关闭优化  优化是默认情况下启用的;。所有方法都在字节码级进行优化。
--optimizationpasses n  #表示proguard对代码进行迭代优化的次数，Android一般为5
+-optimizationpasses 5   #n表示proguard对代码进行迭代优化的次数，Android一般为5
 #优化（Optimization）：默认开启，在字节码级别执行优化，让应用运行的更快。 （上面这两个一般只使用一个）
 
 -dontobfuscate  #关闭混淆
@@ -58,7 +58,7 @@
 #既可以保持该包及子包下的类名，又可以保持类里面的内容不被混淆;
 
 #{
-    -keepnames class_specification
+    #-keepnames class_specification
     #[-keep allowshrinking class_specification 的简写]
     #指定要保留名称的类和类成员，前提是在压缩阶段未被删除。仅用于模糊处理(就是在压缩阶段，如果这个类没有被引用的话，那么这个类会被删去，所以这个没用)
 #}

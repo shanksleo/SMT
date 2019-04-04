@@ -32,6 +32,7 @@ import com.jess.arms.di.component.DaggerAppComponent;
 import com.jess.arms.rxtools.rx.RxLifecycleUtils;
 import com.jess.arms.utils.ArmsUtils;
 import com.open.fire.pic.R;
+import com.open.fire.pic.app.PicAppLifecycles;
 import com.open.fire.utils_package.base.DeviceUtils;
 import com.open.fire.utils_package.base.StatusBarUtil;
 import com.open.fire.utils_package.base.StatusBarUtilsPlus;
@@ -90,7 +91,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        if (!QPMManager.getInstance().floatViewShow()) {
+        if (PicAppLifecycles.isFlowOpen.get() && !QPMManager.getInstance().floatViewShow()) {
             ToastUtils.showShort("请开启悬浮窗权限");
         }
 
@@ -101,6 +102,15 @@ public class SplashActivity extends BaseActivity {
         }else {
             getBackGroundImage(url2);
         }
+        /*
+        * Flowable在Rxjava2中，Flowable可以看做是为了解决背压问题，在Observable的基础上优化后的产物，与Observable不处在同一组观察者模式下，Observable是ObservableSource/Observer这一组观察者模式中ObservableSource的典型实现，而Flowable是Publisher与Subscriber这一组观察者模式中Publisher的典型实现。
+
+            只有在需要处理背压问题时，才需要使用Flowable。
+
+            由于只有在上下游运行在不同的线程中，且上游发射数据的速度大于下游接收处理数据的速度时，才会产生背压问题；
+        * */
+
+        //创建一个在给定的延时之后发射单个数据的Observable
         Observable.timer(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -120,7 +130,7 @@ public class SplashActivity extends BaseActivity {
                     }
                 })*/
                 .compose(RxLifecycleUtils.bindToLifecycle(SplashActivity.this))
-//                .delay(1500, TimeUnit.MILLISECONDS)
+                .delay(1500, TimeUnit.MILLISECONDS)
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {

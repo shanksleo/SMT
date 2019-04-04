@@ -14,6 +14,7 @@ import com.tencent.mrs.plugin.IDynamicConfig;
 import com.zk.qpm.manager.QPMManager;
 
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
@@ -27,6 +28,8 @@ import me.jessyan.autosize.utils.LogUtils;
  * Create on 2018-12-03
  */
 public class PicAppLifecycles implements AppLifecycles {
+
+    public static AtomicBoolean isFlowOpen = new AtomicBoolean(false);
     @Override
     public void attachBaseContext(@NonNull Context base) {
 
@@ -37,7 +40,9 @@ public class PicAppLifecycles implements AppLifecycles {
         Fresco.initialize(application);
         initMetrix(application);
         initAutoSize(application);
-        QPMManager.getInstance().init(application);
+        if (!isFlowOpen.get()) {
+            QPMManager.getInstance().init(application);
+        }
     }
 
     @Override

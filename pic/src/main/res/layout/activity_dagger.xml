@@ -3,18 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:id="@+id/tv_message"
+        android:textSize="20dp"
+        android:textColor="@color/base_black"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content" />
 
 
-    <com.open.fire.pic.mvp.ui.CustomRel
+
+
+
+
+    <TextView
+        android:id="@+id/tv_config"
+        android:text="配置!"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:background="@color/cardview_shadow_start_color"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:background="#009900"></com.open.fire.pic.mvp.ui.CustomRel>
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_marginBottom="60dp"
+        android:layout_alignParentBottom="true"
+        android:text="启动"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_marginTop="260dp"
+        android:layout_marginRight="60dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
 
 </RelativeLayout>
