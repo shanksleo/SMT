@@ -78,13 +78,18 @@ public class AlarmWorker {
 
 
     public static void reflush(){
+        end();
+        start();
+    }
+
+
+
+    public static void sendTest(){
         Intent intent = new Intent("com.shanks.alarm");
         intent.setClass(ContextProvider.get(), LoongggAlarmReceiver.class);
         intent.putExtra("id", -1);
+        intent.putExtra("msg", "18658808854");
         ContextProvider.get().sendBroadcast(intent);
-
-        end();
-        start();
     }
 
 

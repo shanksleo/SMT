@@ -1,6 +1,5 @@
 package com.open.fire.pic.mvp.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,11 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.jess.arms.base.BaseActivity;
-import com.jess.arms.base.ContextProvider;
 import com.jess.arms.di.component.AppComponent;
 import com.open.fire.pic.R;
 import com.open.fire.pic.alarm.AlarmWorker;
-import com.open.fire.pic.service.AlarmWorkService;
 import com.open.fire.utils_package.qqutils.stage.PreferenceHelper;
 
 import butterknife.BindView;
@@ -40,6 +37,8 @@ public class ConfigActivity extends BaseActivity {
     EditText etPreNum;
     @BindView(R.id.tv_save_config)
     TextView tvSaveConfig;
+    @BindView(R.id.et_suffix_num)
+    EditText etSuffixNum;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -51,23 +50,28 @@ public class ConfigActivity extends BaseActivity {
         return R.layout.activity_config;
 
 
+
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        etPreNum.setText(PreferenceHelper.getInstance().getString("pre_num"));
+//        etPreNum.setText(PreferenceHelper.getInstance().getString("pre_num","**21*"));
+//        etSuffixNum.setText(PreferenceHelper.getInstance().getString("suffix_num","#"));
         etTime1.setText(PreferenceHelper.getInstance().getString("1_time"));
         etNum1.setText(PreferenceHelper.getInstance().getString("1_num"));
         etTime2.setText(PreferenceHelper.getInstance().getString("2_time"));
         etNum2.setText(PreferenceHelper.getInstance().getString("2_num"));
         etTime3.setText(PreferenceHelper.getInstance().getString("3_time"));
         etNum3.setText(PreferenceHelper.getInstance().getString("3_num"));
+        etPreNum.clearFocus();
+        etSuffixNum.clearFocus();
     }
 
 
     @OnClick(R.id.tv_save_config)
     public void onViewClicked() {
-        PreferenceHelper.put("pre_num", etPreNum.getText().toString());
+//        PreferenceHelper.put("pre_num", etPreNum.getText().toString());
+//        PreferenceHelper.put("suffix_num", etSuffixNum.getText().toString());
         PreferenceHelper.put("1_time", etTime1.getText().toString());
         PreferenceHelper.put("1_num", etNum1.getText().toString());
         PreferenceHelper.put("2_time", etTime2.getText().toString());
@@ -78,4 +82,6 @@ public class ConfigActivity extends BaseActivity {
         ConfigActivity.this.finish();
 
     }
+
+
 }

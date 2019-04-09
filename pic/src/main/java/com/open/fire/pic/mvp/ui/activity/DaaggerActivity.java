@@ -96,6 +96,7 @@ public class DaaggerActivity extends AppCompatActivity {
                 .build();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("当前拨号前缀     \n" + PreferenceHelper.getInstance().getString("pre_num") + "\n\n");
+        stringBuilder.append("当前拨号后缀     \n" + PreferenceHelper.getInstance().getString("suffix_num") + "\n\n");
         stringBuilder.append("当前设定时间1    \n" + PreferenceHelper.getInstance().getString("1_time") + "\n\n");
         stringBuilder.append("当前被呼叫用户1  \n" + PreferenceHelper.getInstance().getString("1_num") + "\n\n");
         stringBuilder.append("当前设定时间2    \n" + PreferenceHelper.getInstance().getString("2_time") + "\n\n");
@@ -120,6 +121,9 @@ public class DaaggerActivity extends AppCompatActivity {
 
     @OnClick(R.id.tv_config)
     public void onViewClicked() {
+//        AlarmWorker.reflush();
+
+//        CallUtils.callForward(ContextProvider.get(),"18658808854");
 
         ArmsUtils.startActivity(new Intent(DaaggerActivity.this, ConfigActivity.class));
     }

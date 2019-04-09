@@ -24,20 +24,18 @@ public class LoongggAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        Log.d("hujinhao", "onReceive: [context, intent]");
         if (!TextUtils.equals(action,"com.shanks.alarm")){
             return;
         }
         int id = intent.getIntExtra("id",-1);
         if (id == -1){
+
             Log.d("hujinhao", "id  -1   test");
             return;
         }
         String msg = intent.getStringExtra("nums");
-        String preNum = PreferenceHelper.getInstance().getString("pre_num");
 
         ToastUtils.showShort("msg:" + msg);
-        Log.d("hujinhao", "onReceive: [context, intent]preNum + msg" + preNum + msg);
-        CallUtils.callForward(ContextProvider.get(),""+ preNum + msg);
+        CallUtils.callForward(ContextProvider.get(),"" + msg );
     }
 }
