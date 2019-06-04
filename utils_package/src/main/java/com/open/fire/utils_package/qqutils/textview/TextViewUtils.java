@@ -53,6 +53,8 @@ public class TextViewUtils {
         android:singleLine="true"。//这两个必须一起用
         android:ellipsize="end"
         android:maxEms="8"     //8个中文或者16个英文
+
+        tips; 在使用 android:maxEms="6" 属性时， TextView 的宽度需为 wrap_content 方式。
     * */
 
 

@@ -1,35 +1,55 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//Android Studio自身是不能够编译成APK的，它是集成了Gradle。
+// 通过研究Gradle，发现Gradle也只是一个构建工具，真正编译成APK的功能是由
+// Android app plugins提供的
 apply from: "config.gradle"
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        maven {
-            url "https://dl.bintray.com/matrix/maven/"
-        }
+/*
+from: 应用一个脚本文件
 
+plugin: 应用一个插件，通过id或者class名
+
+to: 应用一个目标代理对象*/
+
+
+// buildscript闭包是申明编译该项目所需的相关配置      script      n.	剧本; 电影剧本;
+buildscript {
+  //告知gradle这些配置将从google()与jcenter()中获取
+  repositories {
+    google()
+    jcenter()
+    maven {
+      url "https://dl.bintray.com/matrix/maven/"
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
-        //Gradle Android Maven plugin
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
-        //Gradle Bintray Plugin
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
-        classpath ("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
-    }
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.4.1'
+    //Gradle Android Maven plugin
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
+    //Gradle Bintray Plugin
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+    classpath("com.tencent.matrix:matrix-gradle-plugin:${MATRIX_VERSION}") { changing = true }
+  }
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        maven { url "https://jitpack.io" }
-        maven {
-            url "https://dl.bintray.com/matrix/maven/"
-        }
+  repositories {
+    google()
+    jcenter()
+    maven { url "https://jitpack.io" }
+    maven {
+      url "https://dl.bintray.com/matrix/maven/"
     }
+  }
 }
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
+  delete rootProject.buildDir
 }
+
+//gradle tasks是用来执行特定的gradle任务的。我们可以直接点击Android Studio右边的Gradle按钮，你会发现在Tasks下会列出该项目的所用可执行的gradle任务
+
+/*
+Groovy 语法
+    def printPersonInfo(Map<String, Object> person) {
+        println("${person.name} is ${person.age} years old")
+    }
+*/

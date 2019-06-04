@@ -1,1 +1,35 @@
-include ':demo', ':arms', ':arms-autolayout', ':arms-imageloader-glide', ':pic', ':autosize', ':utils_package', ':utils_matrix'
+include ':demo',
+    ':arms',
+    ':arms-autolayout',
+    ':arms-imageloader-glide',
+    ':pic',
+    ':autosize',
+    ':utils_package',
+    ':utils_matrix'
+
+
+// 这个文件是项目与其子项目或者module间的配置。
+// 里面通过include函数来告诉该项目所包换的子项目或者   依赖    的module。
+
+
+
+//settings.gradle是位于project的最外层，即与app同级
+//settings.gradle用于初始化以及工程树的配置的，放在根工程目录下。
+
+
+/*
+    #是否使用模块化开发
+    isModule=false
+    复制代码然后在settings.gradle中设置项目引入包
+    //默认都打开基础模块
+    include ':sdk', ':model', ':widget', ':module-basic'
+    //根据自己负责的模块分别进行相应的引入
+    include ':module-user'
+    include ':module-business'
+    //根据是否模块开发，是否引入app 模块
+    if (!isModule.toBoolean()) {
+        include ':app'
+    }
+
+*
+* */

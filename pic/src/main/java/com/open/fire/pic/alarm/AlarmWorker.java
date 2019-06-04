@@ -88,7 +88,7 @@ public class AlarmWorker {
         Intent intent = new Intent("com.shanks.alarm");
         intent.setClass(ContextProvider.get(), LoongggAlarmReceiver.class);
         intent.putExtra("id", -1);
-        intent.putExtra("msg", "18658808854");
+        intent.putExtra("msg", "15355015561");
         ContextProvider.get().sendBroadcast(intent);
     }
 

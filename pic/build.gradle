@@ -1,6 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.tencent.matrix-plugin'
 
+/*
+* //通过之前设定的变量进行设置是application还是library  isModule设定在gradle.proprtties 上
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+*
+* */
+
+
+/*
+* android闭包是gradle最重要的配置申明，例如默认的配置信息defaultConfig，包含minSdkVersion最小支持的android版本，versionCode与versionName等。这些配置都与编译息息相关，最好你应该熟悉它们。你实在记不住的话，我这里也有秘籍，AppExtension(https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html)这里面包含所有的配置项与所代表的意义。
+* */
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -61,7 +76,11 @@ android {
         abortOnError false
     }
 }
-
+/*
+*
+这里的dependencies用来申明项目所依赖的第三方库，而这些库的获取来源无需再次申明，
+因为我们已经在之前的根目录的build.gradle中的allprojects闭包中进行了申明。再者之前的ext全局变量也可以在这里使用。
+* */
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
@@ -132,3 +151,9 @@ matrix {
         blackListFile = "${project.projectDir}/matrixTrace/blackMethodList.txt"
     }
 }
+
+
+
+//
+
+// https://mp.weixin.qq.com/s?__biz=MzIzNTc5NDY4Nw==&mid=2247483840&idx=1&sn=f4392bba9a85d79d84e823f2b83aa668&chksm=e8e0f850df9771462447aec9c7275b70e576bd17f20c7eeb703116eb1c23fe534ad796996515&token=1041803379&lang=zh_CN#rd

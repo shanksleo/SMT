@@ -54,7 +54,7 @@
             android:name="com.open.fire.pic.app.PicConfig"
             android:value="ConfigModule" />
         <receiver android:name=".alarm.LoongggAlarmReceiver"
-            android:process=":alarm"
+            android:exported="true"
             android:enabled="true">
             <intent-filter>
                 <action android:name="com.shanks.alarm"/>
