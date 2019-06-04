@@ -86,7 +86,6 @@ public class RxLifecycleUtils {
         return RxLifecycle.bindUntilEvent(lifecycleable.provideLifecycleSubject(), event);
     }
 
-
     /**
      * 绑定 Activity/Fragment 的生命周期
      *
@@ -113,5 +112,4 @@ public class RxLifecycleUtils {
             throw new IllegalArgumentException("Lifecycleable not match");
         }
     }
-
 }

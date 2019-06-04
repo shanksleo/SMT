@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.fire.utils_package.widget.image_utils;
+package com.jess.arms.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.media.ExifInterface;
 import android.widget.TextView;
-
-import com.open.fire.utils_package.app.ContextProvider;
 
 import java.io.IOException;
 
@@ -149,7 +146,6 @@ public class DrawableProvider {
         return returnBm;
     }
 
-
     /**
      * 将图片按照某个角度进行旋转
      *
@@ -177,7 +173,6 @@ public class DrawableProvider {
         }
         return returnBm;
     }
-
 
     /**
      * 读取图片的旋转的角度
@@ -209,16 +204,4 @@ public class DrawableProvider {
         }
         return degree;
     }
-
-
-    /**
-     * Bitmap to drawable.
-     *
-     * @param bitmap The bitmap.
-     * @return drawable
-     */
-    public static Drawable bitmap2Drawable(final Bitmap bitmap) {
-        return bitmap == null ? null : new BitmapDrawable(ContextProvider.get().getResources(), bitmap);
-    }
-
 }

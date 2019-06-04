@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.fire.utils_package.widget.holder;
+package com.jess.arms.widget;
 
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -103,7 +103,6 @@ public class CustomPopupWindow extends PopupWindow {
         }
     }
 
-
     public static final class Builder {
         private View contentView;
         private View parentView;
@@ -132,12 +131,10 @@ public class CustomPopupWindow extends PopupWindow {
             return this;
         }
 
-
         public Builder customListener(CustomPopupWindowListener listener) {
             this.listener = listener;
             return this;
         }
-
 
         public Builder isOutsideTouch(boolean isOutsideTouch) {
             this.isOutsideTouch = isOutsideTouch;
@@ -172,5 +169,4 @@ public class CustomPopupWindow extends PopupWindow {
     public interface CustomPopupWindowListener {
         public void initPopupView(View contentView);
     }
-
 }

@@ -27,7 +27,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.SpannedString;
-import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,6 @@ import android.widget.Toast;
 import com.jess.arms.base.App;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.integration.AppManager;
-import com.open.fire.utils_package.qqutils.alert.ToastUtils;
 
 import java.security.MessageDigest;
 
@@ -54,7 +52,6 @@ import java.security.MessageDigest;
  */
 public class ArmsUtils {
     static public Toast mToast;
-
 
     private ArmsUtils() {
         throw new IllegalStateException("you can't instantiate me!");
@@ -173,6 +170,53 @@ public class ArmsUtils {
         return getResources(context).getString(stringID);
     }
 
+    /**
+     * 从String 中获得字符
+     *
+     * @return
+     */
+    public static String getString(Context context, String strName) {
+        return getString(context, getResources(context).getIdentifier(strName, "string", context.getPackageName()));
+    }
+
+    /**
+     * findview
+     *
+     * @param view
+     * @param viewName
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewByName(Context context, View view, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) view.findViewById(id);
+        return v;
+    }
+
+    /**
+     * findview
+     *
+     * @param activity
+     * @param viewName
+     * @param <T>
+     * @return
+     */
+    public static <T extends View> T findViewByName(Context context, Activity activity, String viewName) {
+        int id = getResources(context).getIdentifier(viewName, "id", context.getPackageName());
+        T v = (T) activity.findViewById(id);
+        return v;
+    }
+
+    /**
+     * 根据 layout 名字获得 id
+     *
+     * @param layoutName
+     * @return
+     */
+    public static int findLayout(Context context, String layoutName) {
+        int id = getResources(context).getIdentifier(layoutName, "layout", context.getPackageName());
+        return id;
+    }
 
     /**
      * 填充view
@@ -189,11 +233,12 @@ public class ArmsUtils {
      *
      * @param string
      */
-    public static void makeText( String string) {
-        if (!TextUtils.isEmpty(string)){
-            ToastUtils.showShort(string);
+    public static void makeText(Context context, String string) {
+        if (mToast == null) {
+            mToast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
         }
-
+        mToast.setText(string);
+        mToast.show();
     }
 
     /**
@@ -222,7 +267,6 @@ public class ArmsUtils {
         AppManager.getAppManager().showSnackbar(text, true);
     }
 
-
     /**
      * 通过资源id获得drawable
      *
@@ -232,7 +276,6 @@ public class ArmsUtils {
     public static Drawable getDrawablebyResource(Context context, int rID) {
         return getResources(context).getDrawable(rID);
     }
-
 
     /**
      * 跳转界面 1, 通过 {@link AppManager#startActivity(Class)}
@@ -251,7 +294,6 @@ public class ArmsUtils {
     public static void startActivity(Intent content) {
         AppManager.getAppManager().startActivity(content);
     }
-
 
     /**
      * 跳转界面 3
@@ -291,7 +333,6 @@ public class ArmsUtils {
         return getResources(context).getDisplayMetrics().heightPixels;
     }
 
-
     /**
      * 获得颜色
      */
@@ -306,7 +347,18 @@ public class ArmsUtils {
         return getColor(context, getResources(context).getIdentifier(colorName, "color", context.getPackageName()));
     }
 
-
+    /**
+     * 移除孩子
+     *
+     * @param view
+     */
+    public static void removeChild(View view) {
+        ViewParent parent = view.getParent();
+        if (parent instanceof ViewGroup) {
+            ViewGroup group = (ViewGroup) parent;
+            group.removeView(view);
+        }
+    }
 
     public static boolean isEmpty(Object obj) {
         if (obj == null) {
@@ -314,7 +366,6 @@ public class ArmsUtils {
         }
         return false;
     }
-
 
     /**
      * MD5
@@ -341,7 +392,48 @@ public class ArmsUtils {
         return hex.toString();
     }
 
+    /**
+     * 全屏,并且沉侵式状态栏
+     *
+     * @param activity
+     */
+    public static void statuInScreen(Activity activity) {
+        WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
+        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        activity.getWindow().setAttributes(attrs);
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
 
+    /**
+     * 配置 RecyclerView
+     *
+     * @param recyclerView
+     * @param layoutManager
+     * @deprecated Use {@link #configRecyclerView(RecyclerView, RecyclerView.LayoutManager)} instead
+     */
+    @Deprecated
+    public static void configRecycleView(final RecyclerView recyclerView
+            , RecyclerView.LayoutManager layoutManager) {
+        recyclerView.setLayoutManager(layoutManager);
+        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+    /**
+     * 配置 RecyclerView
+     *
+     * @param recyclerView
+     * @param layoutManager
+     */
+    public static void configRecyclerView(final RecyclerView recyclerView
+            , RecyclerView.LayoutManager layoutManager) {
+        recyclerView.setLayoutManager(layoutManager);
+        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
 
     /**
      * 执行 {@link AppManager#killAll()}
@@ -362,7 +454,4 @@ public class ArmsUtils {
         Preconditions.checkState(context.getApplicationContext() instanceof App, "%s must be implements %s", context.getApplicationContext().getClass().getName(), App.class.getName());
         return ((App) context.getApplicationContext()).getAppComponent();
     }
-
-
-
 }

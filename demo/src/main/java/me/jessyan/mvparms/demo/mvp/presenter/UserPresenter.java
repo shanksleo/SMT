@@ -21,21 +21,16 @@ import android.arch.lifecycle.OnLifecycleEvent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.SupportActivity;
 import android.support.v7.widget.RecyclerView;
-
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.utils.PermissionUtil;
-import com.jess.arms.rxtools.rx.RxLifecycleUtils;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
+import com.jess.arms.utils.RxLifecycleUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import java.util.List;
+import javax.inject.Inject;
 import me.jessyan.mvparms.demo.mvp.contract.UserContract;
-import me.jessyan.mvparms.demo.mvp.model.entity.Dad;
 import me.jessyan.mvparms.demo.mvp.model.entity.User;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
@@ -67,13 +62,10 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
     private boolean isFirst = true;
     private int preEndIndex;
 
-    @Inject
-    Dad mDad;
-
 
     @Inject
-    public UserPresenter( UserContract.View rootView) {
-        super( rootView);
+    public UserPresenter(UserContract.Model model, UserContract.View rootView) {
+        super(model, rootView);
     }
 
     /**
@@ -83,7 +75,6 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     void onCreate() {
         requestUsers(true);//打开 App 时自动加载列表
-
     }
 
     public void requestUsers(final boolean pullToRefresh) {
