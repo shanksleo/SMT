@@ -161,7 +161,7 @@ public final class AppManager {
                     View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
                     Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
                 } else {
-                    ArmsUtils.makeText( message);
+                    ArmsUtils.makeText(mApplication, message);
                 }
             }
         }).subscribeOn(AndroidSchedulers.mainThread()).subscribe();

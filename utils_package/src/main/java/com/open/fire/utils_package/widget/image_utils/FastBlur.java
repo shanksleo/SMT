@@ -22,6 +22,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
 import android.view.View;
+import com.jess.arms.utils.DrawableProvider;
 
 /**
  * ================================================
